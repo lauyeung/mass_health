@@ -7,6 +7,8 @@ gem 'rails', '4.0.0'
 # gem 'sqlite3'
 
 gem 'pg'
+gem 'hirb'
+gem 'table_print'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'

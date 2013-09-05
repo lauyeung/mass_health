@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # CSV with headers
+require 'csv'
 
-
-CSV.foreach('/data/mass_chip_data.csv', headers: true) do |row|
+CSV.foreach('/Users/lauyeung/Dropbox/launchacademy/mass_health/db/data/mass_chip_data.csv', headers: true) do |town|
   town_data = {
     name: town[0],
     population: town[1],
