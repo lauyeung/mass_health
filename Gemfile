@@ -8,7 +8,7 @@ gem 'rails', '4.0.0'
 
 gem 'pg'
 gem 'hirb'
-gem 'table_print'
+gem "table_print", "~> 1.0.0"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
