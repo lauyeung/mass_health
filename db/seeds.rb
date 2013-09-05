@@ -10,23 +10,30 @@
 require 'csv'
 
 CSV.foreach('/Users/lauyeung/Dropbox/launchacademy/mass_health/db/data/mass_chip_data.csv', headers: true) do |town|
-  town_data = {
-    name: town[0],
-    population: town[1],
-    aged_zero_through_nineteen: town[2],
-    aged_sixty_five_plus: town[3],
-    per_capita_income: town[4],
-    persons_below_poverty: town[5],
-    persons_below_poverty_rate: town[6],
-    adequate_prenatal_care_rate: town[7],
-    c_section_delivery_rate: town[8],
-    infant_deaths: town[9],
-    infant_mortality_rate: town[10],
-    low_birthweight_rate: town[11],
-    multiple_birth_rate: town[12],
-    publicly_financed_prenatal_care_rate: town[13],
-    teen_birth_rate: town[14],
-  }
+
+  if town.length == 14
+
+    town_data = {
+      name: town[0],
+      population: town[1].gsub(/\,/,"").gsub(/\$/,""),
+      aged_zero_through_nineteen: town[2].gsub(/\,/,"").gsub(/\$/,""),
+      aged_sixty_five_plus: town[3].gsub(/\,/,"").gsub(/\$/,""),
+      per_capita_income: town[4].gsub(/\,/,"").gsub(/\$/,""),
+      persons_below_poverty: town[5].gsub(/\,/,"").gsub(/\$/,""),
+      persons_below_poverty_rate: town[6].gsub(/\,/,"").gsub(/\$/,""),
+      adequate_prenatal_care_rate: town[7].gsub(/\,/,"").gsub(/\$/,""),
+      c_section_delivery_rate: town[8].gsub(/\,/,"").gsub(/\$/,""),
+      infant_deaths: town[9].gsub(/\,/,"").gsub(/\$/,""),
+      infant_mortality_rate: town[10].gsub(/\,/,"").gsub(/\$/,""),
+      low_birthweight_rate: town[11].gsub(/\,/,"").gsub(/\$/,""),
+      multiple_birth_rate: town[12].gsub(/\,/,"").gsub(/\$/,""),
+      publicly_financed_prenatal_care_rate: town[13].gsub(/\,/,"").gsub(/\$/,""),
+      teen_birth_rate: town[14].gsub(/\,/,"").gsub(/\$/,"")
+    }
+
+  end
+
+
 
   if TownHealthRecord.where(town_data).empty?
     TownHealthRecord.create(town_data)
